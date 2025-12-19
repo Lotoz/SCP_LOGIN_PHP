@@ -86,9 +86,7 @@ cd SCP_LOGIN_PHP
 
 2. Configurar la Base de Datos
 
-* Crea una nueva base de datos en tu gestor (phpMyAdmin, Workbench, etc.).
-
-* Importa el archivo scp_data.sql incluido en la raíz del proyecto.
+* Importa el archivo scp_data.sql incluido en la raíz del proyecto en tu gestor (phpMyAdmin, Workbench, etc.).
 
 >Nota: No necesitas configurar manualmente un usuario de base de datos en los archivos PHP si utilizas la importación, ya que el sistema está configurado para trabajar con la configuración importada (o las credenciales locales estándar).
 
