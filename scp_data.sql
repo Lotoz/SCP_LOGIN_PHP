@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2025 a las 02:43:37
+-- Tiempo de generación: 19-12-2025 a las 16:49:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `scp_data`
 --
+CREATE DATABASE IF NOT EXISTS `scp_data` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `scp_data`;
 
 -- --------------------------------------------------------
 
@@ -46,12 +48,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `password`, `nombre`, `apellido`, `email`, `rol`, `level`, `theme`, `intentosFallidos`, `activo`, `fechaCreacion`) VALUES
-('aftonUnicorn', '$2y$10$HbNl6YlWkE6Oe20mZPdJ5OX5ZZaiJtfeOK4QkS.MoUUGdcP0MOOxC', 'Ennard', 'Afton', 'aftonUnicorn@scp.com', 'cleaner', 1, 'unicorn', 0, 1, '2025-12-19'),
-('breenaIce', '$2y$10$9xXwiXob4wuTCDk3l/CC7ezpPiSHkdcM.P68vpv5abac0iIU6x7u.', 'Breena', 'Icefrost', 'breena.icefrost@scp.com', 'researcher', 4, 'ice', 0, 1, '2025-12-19'),
-('DoctorLotoz', '$2y$10$tA89XPBwNZyWFqYjd1aJre/9bbayGpGNmeOKlWBkMJ5RAEBVOZCye', 'Lotoz', 'Darken', 'lotoz.darken@scp.com', 'scienct', 6, 'admin', 1, 1, '2025-12-19'),
-('Dr_clef', '$2y$10$XkFotldh/fZkMAzLRvQkhunmZqnmZJz5OTOi6DNKjf0/JczcV3pJW', 'Francis', 'Wojcienchowski', 'alto.clef@scp.com', 'researcher', 3, 'clef', 0, 1, '2025-12-19'),
+('Afton', '$2y$10$0RkS08Ar5f/rdQceioubReKHSQqf585nmx3.f.nNCoZyTKSB/QOga', 'William', 'Afton', 'afton@scp.com', 'cleaner', 1, 'unicorn', 0, 1, '2025-12-19'),
+('Alto_clef', '$2y$10$YERfqb/FAx2QeFWzW1X0a.NWdI8iaeC3JLVccneu3/ew/kT2cKtaO', 'Francis', 'Wojcienchowski', 'alto.clef@scp.com', 'scienct', 3, 'clef', 0, 1, '2025-12-19'),
+('breenaIce', '$2y$10$VJhuLlEtxafg0ljtsCNlzeoMnXT50CBuJVwRz.EvxWerMLq24dymS', 'Breena', 'Icefrost', 'breena.icefrost@scp.com', 'scienct', 4, 'ice', 0, 1, '2025-12-19'),
 ('DrGears', '$2y$10$zgNXIY.I4NRYI.LUJnUriedf.h4d.GIg7yON27xyaENhQvv2dZZKq', 'Charles', 'Ogden Gears', 'charles.gears@scp.com', 'scienct', 5, 'gears', 0, 1, '2025-12-19'),
-('sophieR', '$2y$10$WeU8UiVL9ghASHaXp1.iteYKDUjZLCxol506U/3gdlYxN4MxNZP6W', 'Sophie', 'Ariadna Scarlett', 'scarlettSophie@scp.com', 'scienct', 2, 'sophie', 0, 1, '2025-12-19');
+('Lotoz', '$2y$10$QPCGbTW/lO2/ssTQ9uxQ2.bTZ2dkfFLhbQYrP5njU.7yBA0FQcfv.', 'Lotoz', 'Darken', 'lotoz.scp@scp.com', 'scienct', 6, 'admin', 0, 1, '2025-12-19'),
+('sophieR', '$2y$10$VO1dwpzvkn4FM35Ef1kVb.Z/kXbiIXeOZ2mnKkwFlp0BjHrcRg.PC', 'Sophie Ariadna', 'Scarlett', 'scarlettSophie@scp.com', 'researcher', 2, 'sophie', 0, 1, '2025-12-19');
 
 --
 -- Índices para tablas volcadas
@@ -69,7 +71,8 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 -- Privilegios para `view`@`%` user necesario para el uso de la base de datos su usario es especifico
-
 GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO `view`@`%` IDENTIFIED BY PASSWORD '*5D4B9AEB6CE62913970923D2B7A5BC15F2199608';
 
-GRANT ALL PRIVILEGES ON `scp\_data`.* TO `view`@`%`;
+GRANT ALL PRIVILEGES ON `scp_data`.* TO `view`@`%`;
+
+FLUSH PRIVILEGES;

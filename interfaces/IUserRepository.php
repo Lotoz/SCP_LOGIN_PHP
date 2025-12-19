@@ -6,6 +6,12 @@
  */
 interface IUserRepository
 {
+     /**
+     * Obtener usuario por email
+     * @param string $email Email del usuario
+     * @return User|null Usuario encontrado o null
+     */
+    public function getByEmail($email);
     /**
      * Obtener usuario por ID
      * @param int $id ID del usuario

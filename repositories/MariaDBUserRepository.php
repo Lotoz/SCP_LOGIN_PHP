@@ -23,6 +23,32 @@ class MariaDBUserRepository implements IUserRepository
         $this->conn = $database->getConnection();
     }
 
+     /**
+     * Obtener usuario por email
+     * @param string $email Email del usuario a buscar
+     * @return User|null Usuario encontrado o null
+     */
+    public function getByEmail($email)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE email = :email LIMIT 1";
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return $this->mapRowToUser($row);
+            }
+
+            return null;
+        } catch (PDOException $e) {
+            throw new Exception("Error al buscar usuario: " . $e->getMessage());
+        }
+    }
+
     /**
      * Obtener usuario por ID
      * @param int $id ID del usuario a buscar
