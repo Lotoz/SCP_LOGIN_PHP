@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Los navegadores se pierden en el modelo MVC, antes de cargar cualquier para css y js cargamos
+ * Los navegadores se pierden en el modelo MVC, por ende es necesario especificarles la ruta en general. 
  */
 define('BASE_URL', 'http://localhost/SCP_LOGIN_PHP/');
 

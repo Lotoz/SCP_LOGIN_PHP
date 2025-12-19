@@ -3,8 +3,7 @@
 require_once 'DatabaseConnectionException.php';
 
 /**
- * Database - Clase Singleton para la conexión a BD
- * Asegura que solo hay una instancia de conexión en toda la aplicación
+ * Database conexion a la base de datos
  */
 class Database
 {

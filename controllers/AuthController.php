@@ -44,7 +44,7 @@ class AuthController
             exit();
         }
 
-        
+
         $id = isset($_POST['user']) ? trim($_POST['user']) : '';
         $password = isset($_POST['password']) ? $_POST['password'] : '';
         if (empty($id) || empty($password)) {
@@ -56,7 +56,7 @@ class AuthController
         try {
             $user = $this->userRepository->getById($id);
             if (!$user) {
-                $_SESSION['error'] = 'Credenciales inválidas'; 
+                $_SESSION['error'] = 'Credenciales inválidas';
                 sleep(1); // Pequeña pausa para evitar ataques de fuerza bruta rápidos
                 header('Location: index.php?action=login');
                 exit();
@@ -73,11 +73,11 @@ class AuthController
                 $this->userRepository->updateAttempts($id, $intentos);
                 if ($intentos >= 5) {
                     $_SESSION['error'] = 'Cuenta bloqueada temporalmente por intentos fallidos.';
-                   $this->userRepository->updateState($id);
+                    $this->userRepository->updateState($id);
                 } else {
                     $_SESSION['error'] = 'Credenciales inválidas';
                 }
-                
+
                 header('Location: index.php?action=login');
                 exit();
             }
@@ -90,16 +90,15 @@ class AuthController
 
             $_SESSION['idusuario'] = $user->getId();
             $_SESSION['email'] = $user->getEmail();
-            $_SESSION['nombre'] = $user->getNombreCompleto(); 
+            $_SESSION['nombre'] = $user->getNombreCompleto();
             $_SESSION['level'] = $user->getLevel();
             $_SESSION['rol'] = $user->getRol();
-            $_SESSION['theme'] = $user->getTheme().'.css';
+            $_SESSION['theme'] = $user->getTheme() . '.css';
 
             header('Location: index.php?action=dashboard');
             exit();
-
         } catch (Exception $e) {
-            error_log("Error Login: " . $e->getMessage()); 
+            error_log("Error Login: " . $e->getMessage());
             $_SESSION['error'] = 'Ocurrió un error en el sistema. Intente más tarde.';
             header('Location: index.php?action=login');
             exit();
@@ -123,9 +122,9 @@ class AuthController
      */
     public function logout()
     {
-    SessionManager::logout();
-    header('Location: index.php?action=login');
-    exit();
+        SessionManager::logout();
+        header('Location: index.php?action=login');
+        exit();
     }
 
     /**
@@ -146,17 +145,17 @@ class AuthController
             exit();
         }
 
-        
+
         $id       = $this->sanitizeInput($_POST['id'] ?? '');
         $nombre   = $this->sanitizeInput($_POST['nombre'] ?? '');
         $apellido = $this->sanitizeInput($_POST['apellido'] ?? '');
-        
+
         $emailRaw = $_POST['email'] ?? '';
         $email    = filter_var($emailRaw, FILTER_SANITIZE_EMAIL);
 
         $password = $_POST['password'] ?? '';
         $confirm_password = $_POST['confirm_password'] ?? '';
-        $rol = $_POST['rol'] ?? 'scienct'; 
+        $rol = $_POST['rol'] ?? 'scienct';
 
         if (empty($id) || empty($nombre) || empty($apellido) || empty($email) || empty($password)) {
             $_SESSION['error'] = 'Todos los campos son obligatorios.';
@@ -183,14 +182,14 @@ class AuthController
             exit();
         }
 
-        if (strlen($password) < 8) { 
+        if (strlen($password) < 8) {
             $_SESSION['error'] = 'La contraseña debe tener al menos 8 caracteres.';
             header('Location: index.php?action=register');
             exit();
         }
 
         try {
-            
+
             if ($this->userRepository->getById($id)) {
                 $_SESSION['error'] = 'Operative ID ya registrado. Solicite uno diferente.';
                 header('Location: index.php?action=register');
@@ -202,7 +201,7 @@ class AuthController
                 header('Location: index.php?action=register');
                 exit();
             }
-            
+
             $user = new User($id, $nombre, $apellido, $email, $password, 0, $rol, 'gears'); //0 -> user no habilitado, se debera habilitar
 
             if ($this->userRepository->save($user)) {
@@ -214,10 +213,9 @@ class AuthController
                 header('Location: index.php?action=register');
                 exit();
             }
-
         } catch (Exception $e) {
             $_SESSION['error'] = 'Error del sistema: Contacte al administrador.';
-            error_log($e->getMessage()); 
+            error_log($e->getMessage());
             header('Location: index.php?action=register');
             exit();
         }
@@ -227,9 +225,10 @@ class AuthController
      * Función auxiliar para limpiar entradas de texto
      * Elimina espacios extra, barras invertidas y convierte caracteres especiales en entidades HTML
      */
-    private function sanitizeInput($data) {
-        $data = trim($data);           
-        $data = stripslashes($data);   
+    private function sanitizeInput($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
         $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
         return $data;
     }

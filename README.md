@@ -79,7 +79,7 @@ Follow these steps to run the project in your local environment (XAMPP, WAMP, Do
 1. Clone the repository
 
 ```bash
-git clone [https://github.com/Lotoz/SCP_LOGIN_PHP.git](https://github.com/Lotoz/SCP_LOGIN_PHP.git)
+git clone https://github.com/Lotoz/SCP_LOGIN_PHP.git
 cd SCP_LOGIN_PHP
 ```
 

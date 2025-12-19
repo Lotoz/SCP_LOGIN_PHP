@@ -80,7 +80,8 @@ Sigue estos pasos para ejecutar el proyecto en tu entorno local (XAMPP, WAMP, Do
 1. Clonar el repositorio
 
 ```Bash
-git clone [https://github.com/Lotoz/SCP_LOGIN_PHP.git](https://github.com/Lotoz/SCP_LOGIN_PHP.git) && cd SCP_LOGIN_PHP
+git clone https://github.com/Lotoz/SCP_LOGIN_PHP.git 
+cd SCP_LOGIN_PHP
 ```
 
 2. Configurar la Base de Datos

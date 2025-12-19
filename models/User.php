@@ -6,14 +6,14 @@
  */
 class User
 {
-    private $id; 
+    private $id;
     private $nombre;
     private $apellido;
     private $email;
     private $password;
     private $level;
-    private $rol;              
-    private $theme;            
+    private $rol;
+    private $theme;
     private $intentosFallidos;
     private $activo;
     private $fechaCreacion;
@@ -152,11 +152,6 @@ class User
     public function setFechaCreacion($fecha)
     {
         $this->fechaCreacion = $fecha;
-    }
-
-    public function setUltimoAcceso($acceso)
-    {
-        $this->ultimoAcceso = $acceso;
     }
 
 
