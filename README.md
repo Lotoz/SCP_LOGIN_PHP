@@ -73,11 +73,11 @@ SCP_LOGIN_PHP/
 
 ---
 
-Requirements ⚙️
+⚙️ Requirements 
 
-    PHP 7.4 or higher
-    Server with PDO and MySQL support 
-    MySQL/MariaDB database
+* PHP 7.4 or higher
+* Server with PDO and MySQL support 
+* MySQL/MariaDB database
 
 
 ---
