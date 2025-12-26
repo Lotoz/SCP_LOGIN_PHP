@@ -48,6 +48,7 @@ SCP_LOGIN_PHP/
 │   └── assets/          # Static resources (CSS, JS, Images)
 ├── index.php            # Application entry point
 ├── scp_data.sql         # Database import script
+├── pictures/            # Photos of the README
 ├── passwordandusers.txt # Test credentials (For development only)
 └── README.md
 ```
@@ -69,6 +70,15 @@ SCP_LOGIN_PHP/
 | Unicorn | Clef | Admin |
 |---------|------|-------|
 | ![Unicorn Theme](pictures/unicorn.png) | ![Clef Theme](pictures/clef.png) | ![Admin Theme](pictures/admin.png) |
+
+---
+
+Requirements ⚙️
+
+    PHP 7.4 or higher
+    Server with PDO and MySQL support 
+    MySQL/MariaDB database
+
 
 ---
 
