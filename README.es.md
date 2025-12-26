@@ -49,6 +49,7 @@ SCP_LOGIN_PHP/
 │   └── assets/          # Recursos estáticos (CSS, JS, Imágenes)
 ├── index.php            # Punto de entrada de la aplicación
 ├── scp_data.sql         # Script de importación de la Base de Datos
+├── pictures/            # Photos of the README
 ├── passwordandusers.txt # Credenciales de prueba (Solo para desarrollo)
 └── README.md
 ```
@@ -73,6 +74,13 @@ SCP_LOGIN_PHP/
 
 ---
 
+### ⚙️ Requisitos 
+
+    PHP 7.4 o superior
+    Servidor con soporte PDO y MySQL
+    Base de datos MySQL/MariaDB
+
+---
 ### ⬇️ Instalación
 
 Sigue estos pasos para ejecutar el proyecto en tu entorno local (XAMPP, WAMP, Docker, etc.):
